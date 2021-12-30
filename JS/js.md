@@ -536,3 +536,97 @@
 
 # 18. Generators:
 * **Generators**: là một function có thể được thực thi nhiều lần liên tiếp mà ngữ cảnh (số lượng biến, giá trị biến, trạng thái các thành phần bên trong hàm ...) đều có thể lưu lại sử dụng sau mỗi phiên. Với chức năng mới này, Generator function cũng có thể dừng thực thi bất cứ thời điểm nào, đợi một điều kiện nào nó xảy ra rồi mới tiếp tục thực thi.
+>Ex: 
+
+    function * generatorFunction() { // Line 1
+    console.log('This will be executed first.');
+    yield 'Hello, ';   // Line 2
+    console.log('I will be printed after the pause');  
+    yield 'World!';
+    }
+    const generatorObject = generatorFunction(); // Line 3
+    console.log(generatorObject.next().value); // Line 4
+    console.log(generatorObject.next().value); // Line 5
+    console.log(generatorObject.next().value); // Line 6
+    // This will be executed first.
+    // Hello, 
+    // I will be printed after the pause
+    // World!
+    // undefined
+
+# 19. Kí hiệu '...'
+
+### A. Copy một mảng bẳng toán tử spread
+
+    const arr1 [1,2,3];
+    const arr2 [... arr1];
+    console.log(arr2);
+> Lưu ý: Chức năng copy này không có tác dụng với mảng nhiều chiều hoặc hàm.
+
+### B. Kết hợp các mảng.
+
+    const arr1 [1,2,3];
+    const arr2 [4,5,6];
+    const arr3 [...arr1,...arr2]
+    console.log(arr3);
+
+### C. Thêm phần tử vào mảng
+
+    let arr1 [1,2,3,4];
+    arr1 = [...arr1,4];
+    console.log(arr1);
+
+### D. Thêm thuộc tính vào đối tượng
+
+    const Person = {
+        Ten: Jacob,
+        Gioi tinh: male,
+    };
+    const result = {...Person, tuoi : 25};
+
+### E. Phép gán hủy cấu trúc 
+
+    const Person = {
+        Ten: Jacob,
+        Gioi tinh: male,
+        tuoi: 25
+    };
+    const {Ten, ... thongtin} = Person;
+    console.log(Ten);
+    console.log(thongtin);
+
+### F. Tách chuỗi thành kí tự
+
+    const a = {"Hello World"};
+    const arr = [...a];
+    console.log(arr);
+
+# 20. Typescript
+* Bản chất của **TypeScript** là biên dịch tạo ra các đoạn mã javascript nên ban có thê chạy bất kì ở đâu miễn ở đó có hỗ trợ biên dịch Javascript. Ngoài ra bạn có thể sử dụng trộn lẫn cú pháp của Javascript vào bên trong TypeScript.
+>Ex:
+
+    //Code viết bằng typescript
+    class Customer {
+        Name : string;
+        constructor (firstName: string, lastName: string)
+        {
+                this.Name = firstName + "  " + lastName;
+        }
+        GetName()
+        {
+                return "Hello, " + this.Name;
+        }
+    }
+
+    // Code biên dịch sang javascript:
+    var Customer = (function () {
+        function Customer(firstName, lastName) {
+            this.Name = firstName + "  " + lastName;
+        }
+        Customer.prototype.GetName = function () {
+            return "Hello, " + this.Name;
+        };
+        return Customer;
+    }());
+
+> Code viết bằng typescript "trong sáng" và mạch lạc hơn.
