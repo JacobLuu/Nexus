@@ -22,3 +22,22 @@
 * **Vậy khi nào cần dùng rebase** : Khi muốn một history rõ ràng dễ nhìn, hay còn gọi là linear history và tránh được trường có thêm các merge commit.
 
 # 3. Remote
+* Lệnh git remote cho phép bạn tạo, xem và xóa kết nối giữa các Repo. Những kết nối chứa thông tin địa chỉ đến kho chứa khác, nó có một cái tên để sử dụng khi cần thiết.
+* Để liệt kê các liên kết sử dụng lệnh
+    >git remote
+* Tạo một liên kết:
+    >git remote add remote-name url
+* Xóa một địa chỉ remote:
+    >git remote rm remote-name
+* Đổi tên địa chỉ remote
+    >git remote rename ten-cu ten-moi
+* Xem thông tin về Remote
+    >git remote show origin
+
+# 4. Git reset –soft, mixed và hard
+* **Git reset-mixed**: Di chuyển HEAD về vị trí commmit reset và vẫn giữ nguyên tất cả các thay đổi của file, nhưng loại bỏ các thay đổi khỏi stage.
+    >$ git reset <commit_id>
+* **Git reset-soft**: Lệnh này chỉ di chuyển HEAD về vị trí commit. Trạng thái của stage và tất cả sự thay đổi của file sẽ được giữ nguyên.
+    >$ git reset --soft <commit_id>
+* **Git reset-hard**: Di chuyển con trỏ HEAD về vị trí commmit reset và loại bỏ tất cả sự thay đổi của file sau thời điểm commit reset.
+    >$ git reset --hard <commit_id>
