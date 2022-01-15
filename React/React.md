@@ -273,3 +273,29 @@ import React, { useState } from 'react';
     }
 
 # 7. Event handler
+* React quy ước đổi tên các event theo quy tắc camelCase VD: onclick --> onClick, onchange --> onChange,...
+
+        <button onClick={Click me}>
+        Hi, Jacob!
+        </button>
+* Có thể truyền tham số "event" của sự kiện đó vào trong hàm
+
+        <button onClick={(e) => this.create(id, e)}>Create</button>
+        <button onClick={this.create.bind(this, id)}>Create</button>
+
+# 8. Key trong React
+* Key là một props đặc biệt trong React, props này chỉ được gán nhưng không thể lấy ra để sử dụng.
+* Các giá trị của Key phải là độc nhất (không lặp lại giữa các phần tử), nếu các phần tử có key giống nhau hoặc không được set key thì cửa sổ "console.log" sẽ đưa ra một cảnh báo
+* Khi sử dụng vòng lặp để render ra UI nhiều element tương tự nhau thì React cần có thuộc tính "Key" để phân biệt giữa các element đó
+> Lưu ý: không nên sử dụng tham số index trong Array.map để đặt làm Props key.
+
+9. React router:
+* React-Router là một thư viện định tuyến (routing) tiêu chuẩn trong React. Nó giữ cho giao diện của ứng dụng đồng bộ với URL trên trình duyệt. React-Router cho phép bạn định tuyến "luồng dữ liệu" (data flow) trong ứng dụng của bạn một cách rõ ràng.
+* Các thành phần trong React-Router:
+    > BrowserRouter: Được sử dụng phổ biến hơn, nó sử dụng History API có trong HTML5 để theo dõi lịch sử bộ định tuyến của bạn.
+
+    > HashRouter: Sử dụng hash của URL (window.location.hash) để ghi nhớ mọi thứ.
+
+    > Route: Định nghĩa một ánh xạ (mapping) giữa một URL và một Component. Điều đó có nghĩa là khi người dùng truy cập theo một URL trên trình duyệt, một Component tương ứng sẽ được render trên giao diện.
+
+    > Link
